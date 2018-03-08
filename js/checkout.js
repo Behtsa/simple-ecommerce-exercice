@@ -1,5 +1,10 @@
+let container = document.getElementById()
+
 function calculateTotal() {
-  //como le hacemos para extraer toda
-  //de cantidades de los elementos
-  //en mi carrito
+	let product = localStorage.getItem('productDetails');
+	productDetails= JSON.parse(product);
+	console.log(productDetails);
 }
+
+calculateTotal();
+
