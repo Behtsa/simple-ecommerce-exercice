@@ -1,7 +1,7 @@
 let counterItems = document.getElementById("counterItems");
 let counter = parseInt(counterItems.innerText);
 
-function drawProducts(data) {
+const drawProducts = data => {
   let products = data.products;
   let productsContainer = document.getElementById("products-container");
   products.forEach((product, index) => {
@@ -10,7 +10,7 @@ function drawProducts(data) {
   });
 }
 
-function createProductHTML(product) {
+const createProductHTML = product => {
   let template = `
     <h3>${product.title}</h3>
     <img src='${product.imageUrl}' alt='${product.description}'/>
@@ -28,44 +28,33 @@ function createProductHTML(product) {
 
 drawProducts(data);
 
-function addToCart() {
-  // console.log(event);
-  // console.log(event.target);
-  /* cuando agrego a carrito, tengo que:
-  1) Incrementar en uno mi contador del menu
+const addToCart = () => {
+  console.log("agrego");
+  /* 
   2) Guardar mi producto en algun lugar
-  3) Cambiar el boton de agregar a carrito
-  por quitar del carrito
   */
 }
 
-function removeFromCart() {
+const removeFromCart = () => {
+  console.log("quito")
   /* cuando agrego a carrito, tengo que:
-  1) Decrementar en uno mi contador del menu
   2) Borrar mi producto de algun lugar
-  3) Cambiar el boton de quitar del carrito
-  por agregar a carrito
   */
 }
 
-function increaseCounter() {
-  /* como accedemos al HTML del contador
-  y como lo incrementamos*/
+const increaseCounter = () => {
   counter += 1;
   counterItems.innerText = counter;
-  console.log(counter);
   addToCart();
 }
 
-function decreaseCounter() {
-  /* como accedemos al HTML del contador
-  y como lo incrementamos*/
+const decreaseCounter = () => {
   counter -= 1;
   counterItems.innerText = counter;
-  console.log(counter);
+  removeFromCart();
 }
 
-function changeButtonStatus(product, event) {
+const changeButtonStatus = (product, event) => {
   let element = event.target
   let buttonText = element.firstChild.data;
 
@@ -76,10 +65,4 @@ function changeButtonStatus(product, event) {
     element.innerText = "Agregar a carrito";
     decreaseCounter();
   }
-  /* esta funcion deberia recibir un boton y
-  cambiar su estatus
-    Si el boton esta en agregar al carrito
-      cambia el texto a quitar del carrito
-    Y viceversa
-  */
 }
