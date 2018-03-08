@@ -39,7 +39,15 @@ function addToCart() {
   */
 }
 
-function removeFromCart() {
+function removeFromCart(counter) {
+  let products = data.products;
+  console.log(data.products);
+  //let contador;
+  //for (contador=0; contador <products.length; contador --)
+   let remove = products.shift(counter);{
+     return products;
+   }
+
   /* cuando agrego a carrito, tengo que:
   1) Decrementar en uno mi contador del menu
   2) Borrar mi producto de algun lugar
@@ -55,6 +63,7 @@ function increaseCounter() {
   counterItems.innerText = counter;
   console.log(counter);
   addToCart();
+
 }
 
 function decreaseCounter() {
@@ -63,6 +72,7 @@ function decreaseCounter() {
   counter -= 1;
   counterItems.innerText = counter;
   console.log(counter);
+  removeFromCart(counter);
 }
 
 function changeButtonStatus(product, event) {
