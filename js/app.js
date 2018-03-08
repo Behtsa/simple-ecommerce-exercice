@@ -12,7 +12,7 @@ function createProductHTML(product) {
     <h3>${product.title}</h3>
     <img src='${product.imageUrl}' alt='${product.description}'/>
     <p>${product.description}</p>
-    <button data-product-id=${product.id}
+    <button id="${product.id}" data-product-id=${product.id}
       onclick="addToCart(${product.id}, event)"
       class='btn btn-primary'>Agregar a carrito</button>
     <hr/>
@@ -25,10 +25,8 @@ function createProductHTML(product) {
 
 drawProducts(data);
 
-function addToCart(product, event) {
-  // console.log(event);
-  // console.log(event.target);
-  changeButtonStatus(event.target);
+function addToCart(id, event) {
+  changeButtonStatus(id,event.target);
   /* cuando agrego a carrito, tengo que:
   1) Incrementar en uno mi contador del menu
   2) Guardar mi producto en algun lugar
@@ -56,14 +54,15 @@ function decreaseCounter() {
   y como lo incrementamos*/
 }
 
-function changeButtonStatus(button) {
-  // let buttonId = document.getElementById(id);
+function changeButtonStatus(id, button) {
+  let buttonId = document.getElementById(id);
   let buttonText = button.firstChild.data;
 
+  console.log(buttonText);
   if(buttonText === "Agregar a carrito") {
-    button.innerText = "Remover del carrito";
+    buttonId.innerText = "Remover del carrito";
   } else {
-    button.innerText = "Agregar a carrito";
+    buttonId.innerText = "Agregar a carrito";
   }
   /* esta funcion deberia recibir un boton y
   cambiar su estatus
