@@ -16,25 +16,14 @@ const addToCart = (product) => {
   productsArray.push(productDetails);
 
   localStorage.setItem('productDetails', JSON.stringify(productsArray));
-  /* 
+  /*
   2) Guardar mi producto en algun lugar
   */
 }
 
-<<<<<<< HEAD
-function removeFromCart(counter) {
-  let products = data.products;
-  console.log(data.products);
-  //let contador;
-  //for (contador=0; contador <products.length; contador --)
-   let remove = products.shift(counter);{
-     return products;
-   }
 
-=======
 const removeFromCart = () => {
   console.log("quito")
->>>>>>> upstream/master
   /* cuando agrego a carrito, tengo que:
   2) Borrar mi producto de algun lugar
   */
@@ -43,24 +32,13 @@ const removeFromCart = () => {
 const increaseCounter = (product) => {
   counter += 1;
   counterItems.innerText = counter;
-<<<<<<< HEAD
-  console.log(counter);
-  addToCart();
-
-=======
   addToCart(product);
->>>>>>> upstream/master
 }
 
 const decreaseCounter = () => {
   counter -= 1;
   counterItems.innerText = counter;
-<<<<<<< HEAD
-  console.log(counter);
-  removeFromCart(counter);
-=======
   removeFromCart();
->>>>>>> upstream/master
 }
 
 const changeButtonStatus = (product, event) => {
