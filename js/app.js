@@ -1,6 +1,7 @@
 let counterItems = document.getElementById("counterItems");
 let counter = parseInt(counterItems.innerText);
 
+let productsArray = [];
 
 const addToCart = (product) => {
   console.log(product)
@@ -11,7 +12,10 @@ const addToCart = (product) => {
   });
 
   let productDetails = filterProduct[0];
-  localStorage.setItem('productDetails', JSON.stringify(productDetails));
+
+  productsArray.push(productDetails);
+
+  localStorage.setItem('productDetails', JSON.stringify(productsArray));
   /* 
   2) Guardar mi producto en algun lugar
   */
