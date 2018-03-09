@@ -1,8 +1,10 @@
 let totalTR = document.getElementById('total');
 let tabody = document.getElementById('body-table');
 let product = localStorage.getItem('productDetails');
+let confirmation = document.getElementById('confirmation');
 productDetails= JSON.parse(product);
-console.log(productDetails);
+
+
 let total = 0;
 const calculateTotal = productDetails => {
   let tableTemplate = ` `;
@@ -19,6 +21,12 @@ const calculateTotal = productDetails => {
   totalGap += `
     <td><strong>TOTAL: </strong><em>${total}<em></td>`;
     totalTR.innerHTML = totalGap;
+}
+
+const showConfirmation = num => {
+  console.log(num);
+  let conf = `<p class="text-center"><strong>Confirmacion compra: ${num}</strong></p>`;
+  confirmation.innerHTML = conf;
 }
 
 paypal.Button.render({
@@ -56,7 +64,7 @@ paypal.Button.render({
                 // Make a call to the REST api to execute the payment
                 return actions.payment.execute().then(function(data) {
                     // window.alert('Payment Complete!');
-                    console.log(data);
+                    showConfirmation(data.cart);
                 });
             }
 
