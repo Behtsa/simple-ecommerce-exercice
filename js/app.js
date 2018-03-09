@@ -24,9 +24,7 @@ const addToCart = (product) => {
 
 const removeFromCart = () => {
   console.log("quito")
-  /* cuando agrego a carrito, tengo que:
-  2) Borrar mi producto de algun lugar
-  */
+
 }
 
 const increaseCounter = (product) => {

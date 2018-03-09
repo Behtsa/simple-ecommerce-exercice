@@ -1,3 +1,44 @@
+paypal.Button.render({
+
+           env: 'sandbox', // sandbox | production
+
+           // PayPal Client IDs - replace with your own
+           // Create a PayPal app: https://developer.paypal.com/developer/applications/create
+           client: {
+               sandbox:    'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
+               production: 'AfLIioIO6i635ADVZLmpyqHq4ePQzXjLHihuGkAEcQh1JaB1p7UQHM2enTYEvUIl_hLmx9CXEb-a4IKK'
+           },
+
+           // Show the buyer a 'Pay Now' button in the checkout flow
+           commit: true,
+
+           // payment() is called when the button is clicked
+           payment: function(data, actions) {
+
+               // Make a call to the REST api to create the payment
+               return actions.payment.create({
+                   payment: {
+                       transactions: [
+                           {
+                               amount: { total: 'totalGap', currency: 'MXN' }
+                           }
+                       ]
+                   }
+               });
+           },
+
+           // onAuthorize() is called when the buyer approves the payment
+           onAuthorize: function(data, actions) {
+
+               // Make a call to the REST api to execute the payment
+               return actions.payment.execute().then(function() {
+                   window.alert('Payment Complete!');
+               });
+           }
+
+       }, '#paypal-button');
+
+
 let totalTR = document.getElementById('total');
 let tabody = document.getElementById('body-table');
 let product = localStorage.getItem('productDetails');
@@ -23,4 +64,3 @@ const calculateTotal = productDetails => {
 
 
 calculateTotal(productDetails);
-
