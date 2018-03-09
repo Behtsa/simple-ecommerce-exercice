@@ -16,10 +16,11 @@ const addToCart = (product) => {
   productsArray.push(productDetails);
 
   localStorage.setItem('productDetails', JSON.stringify(productsArray));
-  /* 
+  /*
   2) Guardar mi producto en algun lugar
   */
 }
+
 
 const removeFromCart = () => {
   console.log("quito")
